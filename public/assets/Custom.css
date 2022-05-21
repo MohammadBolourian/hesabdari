@@ -1,0 +1,34 @@
+@font-face {
+    font-family: IRANSans;
+    src: url('font/IRANSansWeb_Light.woff'),
+    url('font/IRANSansWeb.woff') format('truetype');
+    font-weight: normal;
+}
+
+* {
+    direction: rtl;
+    font-family: IRANSans;
+}
+
+.font-mont{
+    background: #202a36;
+}
+a {
+    text-decoration: none!important;
+    color: whitesmoke!important;
+}
+html , body {
+
+    height: 100%;
+ -webkit-print-color-adjust: exact;
+}
+
+#swal2-content{
+    color: black;
+    display: block;
+    font-size: 20px;
+}
+.swal2-icon-content{
+    color: orange;
+}
+
