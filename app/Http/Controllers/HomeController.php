@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\ExitMoney;
 use App\Models\Goal;
 use App\Models\Money;
+use App\Models\User;
 use Illuminate\Support\Carbon;
 use Inertia\Inertia;
 use App\Lib\Mobile_Detect;
@@ -27,7 +28,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        auth()->loginUsingId(3);
+
+//        auth()->loginUsingId(3);
         $user = auth()->user();
         $check =$user->check();
 

@@ -24,16 +24,21 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+//Route::get('/', function () {
+//    return Inertia::render('Welcome', [
+//        'canLogin' => Route::has('login'),
+//        'canRegister' => Route::has('register'),
+//        'laravelVersion' => Application::VERSION,
+//        'phpVersion' => PHP_VERSION,
+//    ]);
+//});
+
 
 Route::get('/dashboard', function () {
+    return redirect()->route('home.index');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/', function () {
     return redirect()->route('home.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -45,7 +50,7 @@ Route::controller(UserController::class)->middleware(['auth'])->group(function (
     Route::put('/user/update/{user}', 'update')->name('user.update');
 });
 
-Route::controller(HomeController::class)->group(function () {
+Route::controller(HomeController::class)->middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', 'index')->name('home.index');
 });
 
