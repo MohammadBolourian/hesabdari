@@ -5,7 +5,7 @@
             <div>
                 <div v-if="Object.keys(date).length  !==0" class="mb-6">
                     <div class="container text-center">
-                        <img class="img-round" :src="'/storage/pic/failed.jpg'">
+                        <img class="img-round" :src="'/images/pic/failed.jpg'">
                         <h1>پرداختی های امروز</h1>
                         <div v-for="(item) in date">
                             <p class="text-p  mt-4 mb-2">مبلغ {{item.price}} تومان  بابت {{item.name}}</p>
@@ -16,7 +16,7 @@
 
                 <div v-else class="mb-6">
                     <div class="container text-center">
-                        <img class="img-round" :src="'/storage/pic/succsess.jpg'">
+                        <img class="img-round" :src="'/images/pic/succsess.jpg'">
                         <h1>هورااا !!!</h1>
                         <p class="text-p">هیچ پرداختی واسه امروز ثبت نشده است</p>
                     </div>

@@ -32,7 +32,7 @@ const submit = () => {
 
         <div class="row col-12 mx-auto">
             <div class="col-4 img-div">
-                <img class="img-login" :src="'/storage/pic/new.jpg'">
+                <img class="img-login" :src="'/images/pic/new.jpg'">
             </div>
             <div class="col-5 glass text-center">
                 <h3 class="mt-6">ورود</h3>
@@ -99,7 +99,7 @@ const submit = () => {
             <div class="col height_glass text-center">
                 <h3 class="mt-6">ورود</h3>
                 <div class="img-middle text-center">
-                    <img class="img2 mx-auto" :src="'/storage/pic/new.jpg'">
+                    <img class="img2 mx-auto" :src="'/images/pic/new.jpg'">
                 </div>
 
                 <BreezeValidationErrors class="mb-4" />

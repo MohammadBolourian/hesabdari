@@ -5,7 +5,7 @@
         <div>
             <div v-if="add_money ==0" class="mb-6">
                 <div class="container text-center">
-                    <img class="img-round" :src="'/storage/pic/failed.jpg'">
+                    <img class="img-round" :src="'/images/pic/failed.jpg'">
                     <h1>برداشت</h1>
                     <p class="text-p">از حساب {{category.name}} مبلغ {{minus_money}} تومان</p>
                     <p class="text-p">در تاریخ {{time_obj}}</p>
@@ -15,7 +15,7 @@
 
             <div v-else class="mb-6">
                 <div class="container text-center">
-                    <img class="img-round" :src="'/storage/pic/succsess.jpg'">
+                    <img class="img-round" :src="'/images/pic/succsess.jpg'">
                     <h1>واریز</h1>
                     <p class="text-p">به حساب {{category.name}} مبلغ {{add_money}} تومان</p>
                     <p class="text-p">در تاریخ {{time_obj}}</p>

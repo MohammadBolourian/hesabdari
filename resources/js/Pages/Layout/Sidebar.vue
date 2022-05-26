@@ -1,6 +1,6 @@
 <template>
     <div class="img-sidebar text-center">
-            <img class="img" :src="'/storage/test/logo.jpg'">
+            <img class="img" :src="'/images/pic/logo.jpg'">
             <h5 class="mt-4 ">حسابداری شخصی</h5>
     </div>
     <div class="d-flex justify-content-evenly p-6 ">

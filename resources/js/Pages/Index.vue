@@ -70,10 +70,10 @@
                     </div>
                 </div>
                 <div class="col-6" v-if="user.pic">
-                    <img class="img-round" :src="'/storage/' + user.pic">
+                    <img class="img-round" :src="'/' + user.pic">
                 </div>
                 <div class="col-6" v-else>
-                    <img class="img-round" :src="'/storage/test/pic.jpg'">
+                    <img class="img-round" :src="'/images/1.jpg'">
                 </div>
             </div>
             <div class="flex p-6 justify-between">

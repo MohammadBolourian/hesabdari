@@ -44,10 +44,19 @@ class UserController extends Controller
         $inputs = $request->all();
         if ($request->hasFile('pic')) {
             if (!empty($user->pic)) {
-                Storage::delete('public/' . $user->pic);
+                $file_path = $user->pic;
+                $image_path = public_path("{$user->pic}");
+                unlink($image_path);
+//                Storage::delete('public/' . $user->pic);
             }
-            $pic = $request->file('pic')->store('test', 'public');
-            $inputs['pic'] = $pic;
+            $pic = $request->file('pic');
+            $image_name = $pic->getClientOriginalName();
+            $pic->move(public_path('/images'),$image_name);
+
+            $pic_path = "images/" . $image_name;
+//            dd($pic_path);
+//            $pic = $request->file('pic')->move('test', 'public');
+            $inputs['pic'] = $pic_path;
         }
         else{
         $inputs['pic']= $user->pic;

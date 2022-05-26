@@ -6,10 +6,10 @@
                 <div class="flex justify-content-between" style="background-color: #1a232f">
                     <div class="name">{{user.name}} خوش آمدید</div>
                     <div class="col-4" v-if="user.pic">
-                        <img class="img-round" :src="'/storage/' + user.pic">
+                        <img class="img-round" :src="'/' + user.pic">
                     </div>
                     <div class="" v-else>
-                        <img class="img-round" :src="'/storage/test/pic.jpg'">
+                        <img class="img-round" :src="'/images/1.jpg'">
                     </div>
                 </div>
                 <div class="row" style="margin-top: 50px">
