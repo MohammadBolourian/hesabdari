@@ -6,6 +6,8 @@
             <h1 class="title">ایجاد تراکنش جدید</h1>
             <Link class="btn btn-danger back" :href="route('home.index')"> بازگشت</Link>
 
+
+
             <form @submit.prevent="form.post(route('money.fast-store',[user.id]))">
                 <div class="mx-5 box-title row">
                     <div class="mb-3 mt-3 col-6">
@@ -19,13 +21,15 @@
                     </div>
                     <div class="mb-3 mt-3 col-6"  v-if="selectDataValidate">
                         <label class="form-label">مبلغ واریزی:</label>
-                        <input type="text" class="form-control"  placeholder="مبلغ را وارد کنید" name="add_money" v-model="form.add_money">
-                        <p class="text-danger mt-1">مبالغ به تومان وارد شود</p>
+                        <input
+                            @keyup="comma()"
+                            type="text" class="form-control"  placeholder="مبلغ را وارد کنید" name="add_money" v-model="form.add_money"/>
+                        <p class="text-danger mt-1">مبالغ به تومان وارد شود </p>
                         <div class="text-danger" v-if="errors.add_money"> {{errors.add_money}}</div>
                     </div>
                     <div class="mb-3 mt-3 col-6"  v-else>
                         <label  class="form-label">مبلغ برداشتی:</label>
-                        <input type="text" class="form-control"  placeholder="مبلغ را وارد کنید" name="minus_money" v-model="form.minus_money" >
+                        <input @keyup="comma()" type="text" class="form-control"  placeholder="مبلغ را وارد کنید" name="minus_money" v-model="form.minus_money" >
                         <p class="text-danger mt-1">مبالغ به تومان وارد شود</p>
                         <div class="text-danger" v-if="errors.minus_money"> {{errors.minus_money}}</div>
                     </div>
@@ -53,7 +57,7 @@
                         <div class="text-danger" v-if="errors.comment"> {{errors.comment}}</div>
                     </section>
                     <div>
-                        <button type="submit" :disabled="form.processing" class="btn btn-primary mt-3 mb-4 col-2 mx-auto">ثبت حساب</button>
+                        <button @click="removeComma()" type="submit" :disabled="form.processing" class="btn btn-primary mt-3 mb-4 col-2 mx-auto">ثبت حساب</button>
                     </div>
                 </div>
             </form>
@@ -71,7 +75,6 @@
 
 
     export default {
-
         components: {
             Link, useForm,AppHead,Layout,DatePicker
         },
@@ -105,16 +108,26 @@
                 selectDataValidate:true,
             }
         },
+
         methods: {
             change: function () {
-                if(this.selected==1)
+                if (this.selected == 1)
                     this.selectDataValidate = true;
-                else if(this.selected==2) {
+                else if (this.selected == 2) {
                     this.selectDataValidate = false;
                 }
             },
-        },
-
+            comma :function () {
+                console.log(this.form.add_money)
+                const result = this.form.add_money.replace(/\D/g, "")
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                console.log(result)
+                this.form.add_money = result
+            },
+            removeComma :function () {
+                this.form.add_money = this.form.add_money.toString().replace(/\D/g, "")
+            }
+        }
     }
 </script>
 

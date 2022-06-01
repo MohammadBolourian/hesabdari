@@ -36,7 +36,7 @@ class CategoryController extends Controller
             $plus=Money::Where('cat_id',$category->id)->sum('add_money');
             $minus=Money::Where('cat_id',$category->id)->sum('minus_money');
             $price=$plus-$minus;
-            $price1[$key]=$price;
+            $price1[$key]=number_format($price);
         }
         if(auth()->user()->id === $user->id)
         {

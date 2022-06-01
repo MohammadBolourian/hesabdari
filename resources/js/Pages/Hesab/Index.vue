@@ -13,6 +13,7 @@
                 <th scope="col">نام حساب</th>
                 <th scope="col">واریز</th>
                 <th scope="col">برداشت</th>
+                <th scope="col">یادداشت</th>
                 <th scope="col">تاریخ</th>
             </tr>
             </thead>
@@ -27,6 +28,7 @@
                 <td>{{name[index]}}</td>
                 <td class="bg-success" >{{add_money[index]}}</td>
                 <td class="bg-danger">{{minus_money[index]}}</td>
+                <td class="">{{comment[index]}}</td>
                 <td class="text-center">
                     {{time_obj[index]}}
                 </td>
@@ -75,6 +77,7 @@
             time:Array,
             hesab:Object,
             add_money:String,
+            comment:String,
             minus_money:String,
             name:String,
             time_obj:String,

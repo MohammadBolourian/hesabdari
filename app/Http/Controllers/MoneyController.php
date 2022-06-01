@@ -42,8 +42,8 @@ class MoneyController extends Controller
             $items = Money::Where('cat_id' , $category->id )->orderBy('time','Asc')->paginate(10)->through(function ($item)  {
                 return [
                     'id' => $item->id,
-                    'add_money' => $item->add_money,
-                    'minus_money' => $item->minus_money,
+                    'add_money' => number_format($item->add_money),
+                    'minus_money' => number_format($item->minus_money),
                     // etc
                 ];
             });
@@ -199,6 +199,7 @@ class MoneyController extends Controller
 
     public function fastRecord(Request $request,User $user)
     {
+
         if(auth()->user()->id === $user->id)
         {
             $categoreis =Category::where('user_id',$user->id)->get();

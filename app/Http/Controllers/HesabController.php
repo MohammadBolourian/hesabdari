@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Money;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Morilog\Jalali\CalendarUtils;
 use function Symfony\Component\Finder\size;
@@ -32,11 +33,13 @@ class HesabController extends Controller
 
             if ($hesab){
                 $add_money =[];
+                $comment =[];
                 $minus_money=[];
                 $name=[];
                 $time_obj=[];
                 foreach ($hesab as $key => $item){
                     $add_money[$key] = number_format($item->add_money);
+                    $comment[$key] = Str::of($item->comment)->limit(20);
                     $minus_money[$key] = number_format($item->minus_money);
                     $name[$key] = $item->category->name;
                     $time_obj[$key] = jalaliDate($item->time);
@@ -45,6 +48,7 @@ class HesabController extends Controller
 
             else{
                 $add_money='';
+                $comment='';
                 $minus_money = '';
                 $name = '';
                 $time_obj='';
@@ -55,6 +59,7 @@ class HesabController extends Controller
                 'time'=>$this->y,
                 'user'=>$user,
                 'add_money'=>$add_money,
+                'comment'=>$comment,
                 'minus_money'=>$minus_money,
                 'name'=>$name,
                 'time_obj' =>$time_obj,
@@ -81,8 +86,8 @@ class HesabController extends Controller
                 ->through(function ($item) {
                     return [
                         'id' => $item->id,
-                        'add_money' => $item->add_money,
-                        'minus_money' => $item->minus_money,
+                        'add_money' => number_format($item->add_money),
+                        'minus_money' => number_format($item->minus_money),
                         'cat_id' => $item->category->name,
                         'time' => jalaliDate($item->time)
                         // etc
