@@ -23506,8 +23506,15 @@ __webpack_require__.r(__webpack_exports__);
       console.log(result);
       this.form.add_money = result;
     },
+    comma1: function comma1() {
+      console.log(this.form.minus_money);
+      var result = this.form.minus_money.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      console.log(result);
+      this.form.minus_money = result;
+    },
     removeComma: function removeComma() {
       this.form.add_money = this.form.add_money.toString().replace(/\D/g, "");
+      this.form.minus_money = this.form.minus_money.toString().replace(/\D/g, "");
     }
   }
 });
@@ -30728,7 +30735,7 @@ var _hoisted_16 = /*#__PURE__*/_withScopeId(function () {
 var _hoisted_17 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
     "class": "text-danger mt-1"
-  }, "مبالغ به تومان وارد شود", -1
+  }, "مبالغ به تومان وارد شود ", -1
   /* HOISTED */
   );
 });
@@ -30850,7 +30857,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* TEXT */
       )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         onKeyup: _cache[4] || (_cache[4] = function ($event) {
-          return $options.comma();
+          return $options.comma1();
         }),
         type: "text",
         "class": "form-control",

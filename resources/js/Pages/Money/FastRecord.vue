@@ -29,8 +29,10 @@
                     </div>
                     <div class="mb-3 mt-3 col-6"  v-else>
                         <label  class="form-label">مبلغ برداشتی:</label>
-                        <input @keyup="comma()" type="text" class="form-control"  placeholder="مبلغ را وارد کنید" name="minus_money" v-model="form.minus_money" >
-                        <p class="text-danger mt-1">مبالغ به تومان وارد شود</p>
+                        <input
+                            @keyup="comma1()"
+                            type="text" class="form-control"  placeholder="مبلغ را وارد کنید" name="minus_money" v-model="form.minus_money"/>
+                        <p class="text-danger mt-1">مبالغ به تومان وارد شود </p>
                         <div class="text-danger" v-if="errors.minus_money"> {{errors.minus_money}}</div>
                     </div>
 
@@ -124,8 +126,16 @@
                 console.log(result)
                 this.form.add_money = result
             },
+            comma1 :function () {
+                console.log(this.form.minus_money)
+                const result = this.form.minus_money.replace(/\D/g, "")
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                console.log(result)
+                this.form.minus_money = result
+            },
             removeComma :function () {
                 this.form.add_money = this.form.add_money.toString().replace(/\D/g, "")
+                this.form.minus_money = this.form.minus_money.toString().replace(/\D/g, "")
             }
         }
     }
